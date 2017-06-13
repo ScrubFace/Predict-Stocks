@@ -2,10 +2,10 @@
 This application predicts the price of google stocks and graphs the data from previous days, it was written in python
 
 # Dependencies:
-numpy 
-tweepy
-matplotlib
-scikit-learn
+1. numpy 
+2. tweepy
+3. matplotlib
+4. scikit-learn
 
 # Usage:
 Just download the application and the .csv file, and make sure you have the dependencies installed. Then go to terminal or cmd
