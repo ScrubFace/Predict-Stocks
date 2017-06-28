@@ -42,5 +42,5 @@ def predict_prices(dates, prices, x):
 
 get_data('googl.csv')
 
-predicted_price = predict_prices(dates, prices, 29)
+predicted_price = predict_prices(dates, prices, 49)
 print(predicted_price)
