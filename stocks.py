@@ -13,8 +13,8 @@ def get_data(filename):
         csvFileReader = csv.reader(csvfile)
         next(csvFileReader)
         for row in csvFileReader:
-            dates.append(int(row[0].split('-')[0]))
-            prices.append(float(row[1]))
+            dates.append(int(row[0].split('-')[2]))
+            prices.append(float(row[4]))
     return
 
 def predict_prices(dates, prices, x):
@@ -28,19 +28,19 @@ def predict_prices(dates, prices, x):
     svr_rbf.fit(dates, prices)
     svr_poly.fit(dates, prices)
 
+    plt.plot(dates, prices, color = 'blue')
     plt.plot(dates, svr_rbf.predict(dates), color = 'red', label = 'RBF model')
-    plt.plot(dates, svr_lin.predict(dates), color = 'blue', label = 'Linear model')
-    plt.plot(dates, svr_poly.predict(dates), color = 'green', label = 'Polynomial model')
+    #plt.plot(dates, svr_lin.predict(dates), color = 'blue', label = 'Linear model')
+    #plt.plot(dates, svr_poly.predict(dates), color = 'green', label = 'Polynomial model')
 
     plt.xlabel('Date')
     plt.ylabel('Price')
-    plt.title('Support Vector Regression')
-    plt.legend()
+    plt.title('BTC algorithm (Red is prediction, Blue is actual)')
     plt.show()
 
     return svr_rbf.predict(x)[0], svr_poly.predict(x)[0], svr_lin.predict(x)[0]
 
-get_data('googl.csv')
+get_data('bitprice2.csv')
 
-predicted_price = predict_prices(dates, prices, 49)
+predicted_price = predict_prices(dates, prices, 31)
 print(predicted_price)
